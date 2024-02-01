@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Comic;
 
 class ComicController extends Controller
 {
@@ -12,9 +13,12 @@ class ComicController extends Controller
      */
     public function index()
     {
-        //
-    }
+        $comics = Comic::all();
 
+        @dd($comics);
+
+        return view('comics.index',compact('comics'));
+    }
     /**
      * Show the form for creating a new resource.
      */
