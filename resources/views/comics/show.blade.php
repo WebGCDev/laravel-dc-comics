@@ -7,6 +7,6 @@
   <title>Document</title>
 </head>
 <body>
-  <h1>{{ $comic->title }}</h1> //in previsione del bonus
+ {{-- <h1>{{ $comic->title }}</h1> in previsione del bonus --}}
 </body>
 </html>
