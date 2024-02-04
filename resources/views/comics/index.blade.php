@@ -8,6 +8,7 @@
          <li>{{ $comic['title'] }} <a href="{{route('comics.show',$comic['id'])}}">INFO</a></li>
     @endforeach
     </ul>
+    <button><a href="{{route('comics.create')}}">AGGIUNGI UN NUOVO FUMETTO</a></button>
     <p><a href="{{route('home')}}">HOME</a></p>
     
 @endsection
