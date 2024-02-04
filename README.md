@@ -14,3 +14,7 @@ Iniziate a definire le prime operazioni CRUD con le relative view:
 Bonus:
 
 creare il seeder per la tabella comics utilizzando il file in allegato
+
+### 02-02-2024
+
+Oggi lavorate sulla stessa repo di ieri e completate le operazioni CRUD.
