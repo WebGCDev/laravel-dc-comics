@@ -1,19 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Document</title>
-</head>
-<body>
- <h1>CREATE</h1>
- @csrf
- <form action="{{ route('comics.store')}}" method="POST">
+@extends('comics.template')
+
+@section('main')
+  <h1>pagina create</h1>
+ <p><a href="{{route('comics.show',1)}}">pagina show</a></p>
+  <form action="{{ route('comics.store')}}" method="POST">
     @csrf
-    <label>PUOI SCRIVERE QUI IL TUO FUMETTO</label>
-    <input type="text">
-    <button>INVIA</button>
+    <label for="title">incia del testo</label>
+    <input type="text" name="title" id="title">
+    <button>button</button>
+    
   </form>
-</body>
-</html>
+@endsection
