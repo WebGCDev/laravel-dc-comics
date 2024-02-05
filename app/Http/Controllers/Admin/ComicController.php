@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Comic;
+use Illuminate\Validation\Rule;
 
 class ComicController extends Controller
 {
@@ -30,21 +31,18 @@ class ComicController extends Controller
      */
     public function store(Request $request)
     {
-    $data = $request->all();
-
-        $comic = new Comic();
-
-        
-        $comic->title = $data['title'];
-        $comic->description = $data['description'];
-        $comic->thumb = $data['thumb'];
-        $comic->price = $data['price'];
-        $comic->series = $data['series'];
-        $comic->sale_date = $data['sale_date'];
-        $comic->type = $data['type'];
-            
-            
-        $comic->save();
+    $request->validate([
+            'title' => 'required|max:90',
+            'thumb' => 'nullable|url',
+            'price' => 'nullable',
+            'series' => 'nullable|max:100',
+            'type' => [
+                'nullable',
+                Rule::in(['comic book','graphic novel'])
+            ],
+            'sale_date' => 'nullable|date',
+            'description' => 'nullable|max:500',
+        ]);
 
 
     //  @dd($data);
@@ -75,13 +73,18 @@ class ComicController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $data = $request->all();
-        
-        $comic_update= Comic::findOrFail($id);
-
-        $comic_update->update($data);
-
-        return redirect()->route('comics.show', $comic_update->id);
+        $request->validate([
+            'title' => 'required|max:90',
+            'thumb' => 'nullable|url',
+            'price' => 'nullable',
+            'series' => 'nullable|max:100',
+            'type' => [
+                'nullable',
+                Rule::in(['comic book','graphic novel'])
+            ],
+            'sale_date' => 'nullable|date',
+            'description' => 'nullable|max:500',
+        ]);
     }
 
     /**
